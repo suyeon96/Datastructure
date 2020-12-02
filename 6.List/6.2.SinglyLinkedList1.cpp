@@ -1,6 +1,6 @@
 /*
- * 6.1
- * 단일 연결리스트 구현
+ * 6.2
+ * 단일 연결리스트 구현 (head pointer 사용)
  */
 #include <iostream>
 using namespace std;
@@ -31,7 +31,7 @@ public:
 template <typename T>
 class SinglyLinkedList {
 private:
-    Node<T>* head;
+    Node<T>* head;  // head pointer
     int size = 0;
 
 public:
@@ -40,7 +40,8 @@ public:
     }
     ~SinglyLinkedList(){}
 
-    void addNode(T data){       // 노드 추가하기 (마지막)
+    // list 마지막에 data 삽입
+    void insert(T data){
         Node<T>* node = new Node<T>(data, nullptr);
 
         if(isEmpty()){      // 비어있는 경우 head에 node 추가
@@ -56,7 +57,8 @@ public:
         size++;
     }
 
-    void addNode(T data, int idx){  // 노드 추가하기 (index지정)
+    // list의 idx번째에 data 삽입
+    void insert(T data, int idx){
         if(idx < 0 || idx > size){
             cout << "index error" << endl;
             return;
@@ -79,7 +81,8 @@ public:
         size++;
     }
 
-    void removeNode(int idx){  // 노드 삭제 (index 지정)
+    // idx번째 요소 삭제
+    void remove(int idx){
         if(isEmpty()){
             cout << "List is Empty" << endl;
             return;
@@ -106,7 +109,8 @@ public:
         size--;
     }
 
-    void display(){     // List 출력
+    // list 출력
+    void display(){
         if(isEmpty()){
             cout << "List is Empty" << endl;
             return;
@@ -126,20 +130,17 @@ public:
 };
 
 int main(){
-    SinglyLinkedList<int> list;
+    SinglyLinkedList<char> list;
 
-    cout << "===== addNode x3 =====" << endl;
-    list.addNode(1);
-    list.addNode(2);
-    list.addNode(3);
+    cout << "===== insert x4 =====" << endl;
+    list.insert('a');
+    list.insert('b');
+    list.insert('c');
+    list.insert('d', 2);   // insert 'd' at index2
     list.display();
 
-    cout << "===== addNode '4' at index2 =====" << endl;
-    list.addNode(4, 2);
-    list.display();
-
-    cout << "===== deleteNode at index1 =====" << endl;
-    list.removeNode(1);
+    cout << "===== remove index1 =====" << endl;
+    list.remove(1);
     list.display();
 
     return 0;

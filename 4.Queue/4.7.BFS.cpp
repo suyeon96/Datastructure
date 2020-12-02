@@ -1,6 +1,6 @@
 /*
  * 4.7
- * Queue을 활용하여 미로탐색(DFS) 알고리즘 구현
+ * Queue을 활용하여 미로탐색(BFS) 알고리즘 구현
  */
 #include <iostream>
 #include <queue>
