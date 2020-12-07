@@ -277,13 +277,17 @@ public:
 
     // 깊이우선탐색 (순환)
     void dfs(int v){
+        resetVisited();
+        dfsRecur(v);
+    }
+    void dfsRecur(int v){
         visited[v] = true;      // 현재 vertex 방문처리
         cout << getVertex(v) << " ";
 
         // v 정점의 인접리스트를 모두 방문하며 탐색
         for(Node *p=adjList[v]; p!=NULL; p=p->getLink()){
             if(visited[p->getId()] == false){
-                dfs(p->getId());
+                dfsRecur(p->getId());
             }
         }
     }
